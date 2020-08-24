@@ -1,9 +1,15 @@
 from twitter import Twitter
 from trigram import Trigram
+from corpus import create_corpus, reconstruct_corpus
 
 if __name__ == "__main__":
+    """Main program"""
+    
     tw = Twitter()
-    corpus = tw.fecth_tweets(200)
+    corpus = tw.fecth_tweets(3000, wait=True)
+    create_corpus(corpus, 'tweets')
+
+    corpus = reconstruct_corpus('tweets.pickle')
 
     trigram = Trigram(corpus=corpus)
 

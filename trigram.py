@@ -8,8 +8,12 @@ from random import random
 from twitter import Twitter
 
 class Trigram:
+    """This is Trigram class"""
 
     def __init__(self, corpus: list):
+        """
+        Initialize variable
+        """
         self.raw_corpus_ = corpus
         self.trigram_ = []
         self.dic3 = None
@@ -19,7 +23,13 @@ class Trigram:
         self._create_usage()
 
     def _tinified_corpus(self):
-        corpus = [re.sub('(\n)+|\\s|(#|http(s*)://)[a-zA-Z0-9./]*|(ー|-)+|,+|(\.)+|、+|。+|(|)|（|）|(!|\?)+', '', item) for item in self.raw_corpus_]
+        """"
+        Tinifiy a given corpus,
+        and then generate numpy array of tweets text.
+
+        Finally, it return itself.
+        """
+        corpus = [re.sub('(\n)+|\\s|(#|http(s*)://)[a-zA-Z0-9./]*|(ー|-)+|,+|(\.)+|、+|。+|(\(|\))|（|）|(!|\?)+|！+|？+|;|:|\^|\$', '', item) for item in self.raw_corpus_]
         with open('ignore_words.txt', mode='r', encoding='utf-8') as f:
             print('以下がコーパス除外単語です')
             ignore = re.sub(r'\n', '', f.readline())
@@ -35,6 +45,12 @@ class Trigram:
         return self
 
     def _create_trigram(self):
+        """"
+        Create trigram.
+        This is list including tuple which has three words.
+
+        Finally, it return itself.
+        """
         wakati = MeCab.Tagger('-Owakati -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd')
         for target in self.corpus_:
             target = wakati.parse(target).split(' ')
@@ -46,6 +62,11 @@ class Trigram:
         return self
 
     def _generate_unit(self, word):
+        """
+        This is used in the generate function.
+
+        This return boolean, True or False.
+        """
         dic = self.dic3
         matched = []
 
@@ -79,6 +100,9 @@ class Trigram:
         return True
 
     def _create_usage(self):
+        """
+        This can show words list you can select for starting word of sentence
+        """
         for words in self.trigram_:
             listed = list(words)
             if listed:
@@ -89,6 +113,9 @@ class Trigram:
 
 
     def generate(self, word):
+        """
+        This can generate sentence using Trigram
+        """
         output = word
         word = word
         while True:
