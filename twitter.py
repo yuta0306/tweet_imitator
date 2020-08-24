@@ -62,8 +62,3 @@ class Twitter:
             print(e)
             return False
                 
-
-if __name__ == "__main__":
-    tw = Twitter()
-    res = tw.fecth_tweets(200)
-    print(res)

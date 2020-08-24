@@ -98,9 +98,3 @@ class Trigram:
             output += word[1]
 
         return output
-
-if __name__ == "__main__":
-    tri = Trigram(['\nあ\nアイウエオ\n', 'ー', 'ーーーーーーーー'])
-    
-    
-    
