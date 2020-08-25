@@ -6,7 +6,7 @@ if __name__ == "__main__":
     """Main program"""
     
     tw = Twitter()
-    corpus = tw.fecth_tweets(3000, wait=True)
+    corpus = tw.fecth_tweets(5000, wait=True)
     create_corpus(corpus, 'tweets')
 
     corpus = reconstruct_corpus('tweets.pickle')

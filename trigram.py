@@ -74,7 +74,7 @@ class Trigram:
             matched = np.array(list(
                 filter((lambda x: x[0][0] == word) or (lambda x: x[0][1] == word),
                         dic.items())
-            ))
+            ), dtype='object')
             if len(matched) == 0:
                 print('マッチするパターンがなかったため入力値がそのまま出力されます')
                 return False
@@ -90,7 +90,7 @@ class Trigram:
                 matched = np.array(list(
                 filter((lambda x: x[0][0] == word[0]) or (lambda x: x[0][1] == word[2]),
                         dic.items())
-                ))
+                ), dtype='object')
                 if len(matched) == 0:
                     return False
                 probas = [count[1] for count in matched]
