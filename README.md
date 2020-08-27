@@ -52,7 +52,7 @@ You should change the script to the following script.
 ```Python @ main.py after rewriting
 ......
 def _create_trigram(self):
-        wakati = MeCab.Tagger('-Owakati) <--- here
+        wakati = MeCab.Tagger('-Owakati') <--- here
         for target in self.corpus_:
             target = wakati.parse(target).split(' ')
 ......
