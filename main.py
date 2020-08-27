@@ -20,7 +20,7 @@ if __name__ == "__main__":
     try:
         while True:
             word = input('\n開始単語を1語入力してください:')
-            sentence = trigram.generate(word)
+            sentence = trigram.generate(word, 0.08)
             print(sentence)
             print('============================')
             tweet = input('ツイートしますか? (Y/n)')

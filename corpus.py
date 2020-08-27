@@ -5,7 +5,7 @@ def create_corpus(raw: list, save_to: str):
     """Create corpus and save it"""
     try:
         file = '{}.pickle'.format(save_to)
-        print(file)
+        print('Save to {}...'.format(file))
         if os.path.isfile(file):
             corpus = reconstruct_corpus(file)
             corpus += raw
