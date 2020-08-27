@@ -22,15 +22,15 @@ You should visit Mecab official Web site [here](https://taku910.github.io/mecab)
 
 ## Create Environments
 
-'''terminal or prompt
-pip install -r requirements.txt
-'''
+    '''terminal or prompt
+    pip install -r requirements.txt
+    '''
 
 ## Run this script
 
-'''terminal or prompt
-python main.py
-'''
+    '''terminal or prompt
+    python main.py
+    '''
 
 ## Customize this script
 
@@ -38,22 +38,22 @@ python main.py
 
 When you would not like to use *neo-dictionary(additional dictionary)*, you will rewrite *main.py*.
 
-'''Python @ main.py before rewriting
-......
-def _create_trigram(self):
-        wakati = MeCab.Tagger('-Owakati -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd') <--- here
-        for target in self.corpus_:
-            target = wakati.parse(target).split(' ')
-......
-'''
+    '''Python @ main.py before rewriting
+    ......
+    def _create_trigram(self):
+            wakati = MeCab.Tagger('-Owakati -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd') <--- here
+            for target in self.corpus_:
+                target = wakati.parse(target).split(' ')
+    ......
+    '''
 
 You should change the script to the following script.  
 
-'''Python @ main.py after rewriting
-......
-def _create_trigram(self):
-        wakati = MeCab.Tagger('-Owakati) <--- here
-        for target in self.corpus_:
-            target = wakati.parse(target).split(' ')
-......
-'''
+    '''Python @ main.py after rewriting
+    ......
+    def _create_trigram(self):
+            wakati = MeCab.Tagger('-Owakati) <--- here
+            for target in self.corpus_:
+                target = wakati.parse(target).split(' ')
+    ......
+    '''
